@@ -21,7 +21,7 @@ class ViewController: UIViewController {
                     print("Obtained credentials: \(credentials)")
                     
                     if IDTokenValidator.validate(credentials.idToken) {
-                        print("Yay! the token is valid")
+                        print("Yay! The token is valid")
                     }
                 case .failure(let error):
                     print("Failed with \(error)")
