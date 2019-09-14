@@ -123,44 +123,29 @@ class IDTokenValidatorTests: QuickSpec {
             }
             
             context("given invalid claims") {
-                it("should return false for an invalid iss") {
-                    guard let claims = Claims(InvalidTokens.invalidIss.rawValue) else {
+                guard let invalidIssClaims = Claims(InvalidTokens.invalidIss.rawValue),
+                    let invalidSubClaims = Claims(InvalidTokens.invalidSub.rawValue),
+                    let invalidAudClaims = Claims(InvalidTokens.invalidAud.rawValue),
+                    let invalidExpClaims = Claims(InvalidTokens.invalidExp.rawValue) else {
                         fail("failed to extract claims")
-                        
-                        return
-                    }
                     
-                    expect(ClaimsValidator(credentials).validate(claims)).to(beFalse())
+                        return
+                }
+                
+                it("should return false for an invalid iss") {
+                    expect(ClaimsValidator(credentials).validate(invalidIssClaims)).to(beFalse())
                 }
                 
                 it("should return false for an invalid sub") {
-                    guard let claims = Claims(InvalidTokens.invalidSub.rawValue) else {
-                        fail("failed to extract claims")
-                        
-                        return
-                    }
-                    
-                    expect(ClaimsValidator(credentials).validate(claims)).to(beFalse())
+                    expect(ClaimsValidator(credentials).validate(invalidSubClaims)).to(beFalse())
                 }
                 
                 it("should return false for an invalid aud") {
-                    guard let claims = Claims(InvalidTokens.invalidAud.rawValue) else {
-                        fail("failed to extract claims")
-                        
-                        return
-                    }
-                    
-                    expect(ClaimsValidator(credentials).validate(claims)).to(beFalse())
+                    expect(ClaimsValidator(credentials).validate(invalidAudClaims)).to(beFalse())
                 }
                 
                 it("should return false for an invalid exp") {
-                    guard let claims = Claims(InvalidTokens.invalidExp.rawValue) else {
-                        fail("failed to extract claims")
-                        
-                        return
-                    }
-                    
-                    expect(ClaimsValidator(credentials).validate(claims)).to(beFalse())
+                    expect(ClaimsValidator(credentials).validate(invalidExpClaims)).to(beFalse())
                 }
             }
         }
