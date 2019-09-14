@@ -19,6 +19,13 @@
 		D587745E2328846800180C07 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = D587745D2328846800180C07 /* Auth0.plist */; };
 		D5B65ECA2329F0FC000D8CAF /* Auth0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B65EC92329F0FC000D8CAF /* Auth0.framework */; };
 		D5B65ECC2329F0FF000D8CAF /* SimpleKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B65ECB2329F0FF000D8CAF /* SimpleKeychain.framework */; };
+		D5B65ED9232C713D000D8CAF /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B65ED8232C713D000D8CAF /* Quick.framework */; };
+		D5B65EDB232C7143000D8CAF /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B65EDA232C7143000D8CAF /* Nimble.framework */; };
+		D5B65EDC232C714F000D8CAF /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5B65ED8232C713D000D8CAF /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D5B65EDD232C7156000D8CAF /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5B65EDA232C7143000D8CAF /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D5B65EDF232C78DC000D8CAF /* ValidCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5B65EDE232C78DC000D8CAF /* ValidCredentials.plist */; };
+		D5B65EE1232C7A04000D8CAF /* InvalidCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5B65EE0232C7A04000D8CAF /* InvalidCredentials.plist */; };
+		D5B65EE3232C7F67000D8CAF /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5B65EE2232C7F67000D8CAF /* Auth0.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D5B65ED3232C7023000D8CAF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D5B65EDD232C7156000D8CAF /* Nimble.framework in CopyFiles */,
+				D5B65EDC232C714F000D8CAF /* Quick.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +87,11 @@
 		D587745D2328846800180C07 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		D5B65EC92329F0FC000D8CAF /* Auth0.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Auth0.framework; path = Carthage/Build/iOS/Auth0.framework; sourceTree = "<group>"; };
 		D5B65ECB2329F0FF000D8CAF /* SimpleKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleKeychain.framework; path = Carthage/Build/iOS/SimpleKeychain.framework; sourceTree = "<group>"; };
+		D5B65ED8232C713D000D8CAF /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		D5B65EDA232C7143000D8CAF /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		D5B65EDE232C78DC000D8CAF /* ValidCredentials.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ValidCredentials.plist; sourceTree = "<group>"; };
+		D5B65EE0232C7A04000D8CAF /* InvalidCredentials.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = InvalidCredentials.plist; sourceTree = "<group>"; };
+		D5B65EE2232C7F67000D8CAF /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +107,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D587743523287C3100180C07 /* IDTokenValidator.framework in Frameworks */,
+				D5B65ED9232C713D000D8CAF /* Quick.framework in Frameworks */,
+				D5B65EDB232C7143000D8CAF /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +160,9 @@
 			children = (
 				D587743923287C3100180C07 /* IDTokenValidatorTests.swift */,
 				D587743B23287C3100180C07 /* Info.plist */,
+				D5B65EDE232C78DC000D8CAF /* ValidCredentials.plist */,
+				D5B65EE0232C7A04000D8CAF /* InvalidCredentials.plist */,
+				D5B65EE2232C7F67000D8CAF /* Auth0.plist */,
 			);
 			path = IDTokenValidatorTests;
 			sourceTree = "<group>";
@@ -156,6 +184,8 @@
 		D5877466232887B000180C07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D5B65EDA232C7143000D8CAF /* Nimble.framework */,
+				D5B65ED8232C713D000D8CAF /* Quick.framework */,
 				D5B65ECB2329F0FF000D8CAF /* SimpleKeychain.framework */,
 				D5B65EC92329F0FC000D8CAF /* Auth0.framework */,
 			);
@@ -201,6 +231,7 @@
 				D587743023287C3100180C07 /* Sources */,
 				D587743123287C3100180C07 /* Frameworks */,
 				D587743223287C3100180C07 /* Resources */,
+				D5B65ED3232C7023000D8CAF /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -287,6 +318,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5B65EDF232C78DC000D8CAF /* ValidCredentials.plist in Resources */,
+				D5B65EE3232C7F67000D8CAF /* Auth0.plist in Resources */,
+				D5B65EE1232C7A04000D8CAF /* InvalidCredentials.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,6 +630,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5GM2GDLL98;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = IDTokenValidatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -615,6 +653,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5GM2GDLL98;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = IDTokenValidatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

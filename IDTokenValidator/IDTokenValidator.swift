@@ -26,13 +26,13 @@ public class IDTokenValidator {
     }
 }
 
-private struct Claims {
-    let iss: String
-    let aud: String
-    let sub: String
-    let exp: Double
+internal struct Claims {
+    internal let iss: String
+    internal let aud: String
+    internal let sub: String
+    internal let exp: Double
     
-    init?(_ idToken: String) {
+    internal init?(_ idToken: String) {
         // From https://github.com/auth0/Auth0.swift/blob/master/Auth0/OAuth2Grant.swift
         
         let splitToken = idToken.split(separator: ".")
@@ -65,12 +65,12 @@ private struct Claims {
     }
 }
 
-private struct Credentials {
-    let clientId: String
-    let domain: String
+internal struct Credentials {
+    internal let clientId: String
+    internal let domain: String
     
-    init?(_ bundle: Bundle) {
-        guard let path = bundle.path(forResource: "Auth0", ofType: "plist"),
+    internal init?(_ bundle: Bundle, plist file: String = "Auth0") {
+        guard let path = bundle.path(forResource: file, ofType: "plist"),
             let credentials = NSDictionary(contentsOfFile: path),
             let clientId = credentials["ClientId"] as? String,
             let domain = credentials["Domain"] as? String else { return nil }
@@ -80,10 +80,10 @@ private struct Credentials {
     }
 }
 
-private class ClaimsValidator {
+internal class ClaimsValidator {
     private let credentials: Credentials
     
-    init(_ credentials: Credentials) {
+    internal init(_ credentials: Credentials) {
         self.credentials = credentials
     }
     
@@ -115,7 +115,7 @@ private class ClaimsValidator {
         return Date(timeIntervalSince1970: exp) > Date().addingTimeInterval(5.0 * 60.0)
     }
     
-    func validate(_ claims: Claims) -> Bool {
+    internal func validate(_ claims: Claims) -> Bool {
         return validateIss(claims.iss) &&
             validateAud(claims.aud) &&
             validateSub(claims.sub) &&
