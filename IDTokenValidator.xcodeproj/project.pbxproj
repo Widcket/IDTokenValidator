@@ -127,9 +127,9 @@
 		D587742123287C3000180C07 = {
 			isa = PBXGroup;
 			children = (
-				D587742D23287C3000180C07 /* IDTokenValidator */,
-				D587743823287C3100180C07 /* IDTokenValidatorTests */,
-				D587744A23287D1500180C07 /* IDTokenValidatorExample */,
+				D587742D23287C3000180C07 /* Sources */,
+				D587743823287C3100180C07 /* Tests */,
+				D587744A23287D1500180C07 /* Example */,
 				D587742C23287C3000180C07 /* Products */,
 				D5877466232887B000180C07 /* Frameworks */,
 			);
@@ -145,40 +145,36 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D587742D23287C3000180C07 /* IDTokenValidator */ = {
+		D587742D23287C3000180C07 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				D587742E23287C3100180C07 /* IDTokenValidator.h */,
-				D587742F23287C3100180C07 /* Info.plist */,
 				D55CB0E42329DD3D003275EC /* IDTokenValidator.swift */,
+				D5B65EEB232C8F46000D8CAF /* SupportFiles */,
 			);
-			path = IDTokenValidator;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		D587743823287C3100180C07 /* IDTokenValidatorTests */ = {
+		D587743823287C3100180C07 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				D587743923287C3100180C07 /* IDTokenValidatorTests.swift */,
-				D587743B23287C3100180C07 /* Info.plist */,
-				D5B65EDE232C78DC000D8CAF /* ValidCredentials.plist */,
-				D5B65EE0232C7A04000D8CAF /* InvalidCredentials.plist */,
-				D5B65EE2232C7F67000D8CAF /* Auth0.plist */,
+				D5B65EEA232C8EF7000D8CAF /* TestCredentials */,
+				D5B65EE8232C8EDA000D8CAF /* SupportFiles */,
 			);
-			path = IDTokenValidatorTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
-		D587744A23287D1500180C07 /* IDTokenValidatorExample */ = {
+		D587744A23287D1500180C07 /* Example */ = {
 			isa = PBXGroup;
 			children = (
 				D587744B23287D1500180C07 /* AppDelegate.swift */,
 				D587744D23287D1500180C07 /* ViewController.swift */,
 				D587744F23287D1500180C07 /* Main.storyboard */,
-				D587745223287D1700180C07 /* Assets.xcassets */,
 				D587745423287D1700180C07 /* LaunchScreen.storyboard */,
-				D587745723287D1700180C07 /* Info.plist */,
-				D587745D2328846800180C07 /* Auth0.plist */,
+				D5B65EEC232C8F54000D8CAF /* SupportFiles */,
 			);
-			path = IDTokenValidatorExample;
+			path = Example;
 			sourceTree = "<group>";
 		};
 		D5877466232887B000180C07 /* Frameworks */ = {
@@ -190,6 +186,42 @@
 				D5B65EC92329F0FC000D8CAF /* Auth0.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D5B65EE8232C8EDA000D8CAF /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D587743B23287C3100180C07 /* Info.plist */,
+			);
+			name = SupportFiles;
+			sourceTree = "<group>";
+		};
+		D5B65EEA232C8EF7000D8CAF /* TestCredentials */ = {
+			isa = PBXGroup;
+			children = (
+				D5B65EDE232C78DC000D8CAF /* ValidCredentials.plist */,
+				D5B65EE0232C7A04000D8CAF /* InvalidCredentials.plist */,
+				D5B65EE2232C7F67000D8CAF /* Auth0.plist */,
+			);
+			path = TestCredentials;
+			sourceTree = "<group>";
+		};
+		D5B65EEB232C8F46000D8CAF /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D587742F23287C3100180C07 /* Info.plist */,
+			);
+			name = SupportFiles;
+			sourceTree = "<group>";
+		};
+		D5B65EEC232C8F54000D8CAF /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D587745723287D1700180C07 /* Info.plist */,
+				D587745D2328846800180C07 /* Auth0.plist */,
+				D587745223287D1700180C07 /* Assets.xcassets */,
+			);
+			name = SupportFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -578,7 +610,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = IDTokenValidator/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -609,7 +641,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = IDTokenValidator/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -634,7 +666,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = IDTokenValidatorTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -657,7 +689,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = IDTokenValidatorTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -681,7 +713,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = IDTokenValidatorExample/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -704,7 +736,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = IDTokenValidatorExample/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
