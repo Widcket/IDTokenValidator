@@ -32,6 +32,7 @@ xcuserdata
 # Carthage
 Carthage/Checkouts
 Carthage/Build
+*.framework.zip
 
 # Auth0
 Auth0.plist
