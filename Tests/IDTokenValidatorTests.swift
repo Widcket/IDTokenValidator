@@ -69,14 +69,18 @@ class IDTokenValidatorTests: QuickSpec {
             
             context("given a structurally valid token") {
                 it("should extract the claims") {
-                    let tokens: [InvalidTokens] = [.invalidIss, .invalidSub, .invalidAud, .invalidExp]
+                    let tokens: [InvalidTokens] = [.invalidIss,
+                                                   .invalidSub,
+                                                   .invalidAud,
+                                                   .invalidIat,
+                                                   .invalidExp]
                         
                     tokens.map{ Claims($0.rawValue) }.forEach {
                         expect($0).toNot(beNil())
                         expect($0?.iss).toNot(beEmpty())
                         expect($0?.sub).toNot(beEmpty())
                         expect($0?.aud).toNot(beEmpty())
-                        expect($0?.iat).to(beGreaterThan(1567321702))
+                        expect($0?.iat).to(beLessThan(1568427208))
                         expect($0?.exp).to(beGreaterThan(1568340808))
                     }
                 }
@@ -84,9 +88,16 @@ class IDTokenValidatorTests: QuickSpec {
             
             context("given a structurally invalid token") {
                 it("should return nil") {
-                    let claims = Claims(InvalidTokens.dummy.rawValue)
+                    let tokens: [InvalidTokens] = [.missingIss,
+                                                   .missingSub,
+                                                   .missingAud,
+                                                   .missingIat,
+                                                   .missingExp,
+                                                   .dummy]
                     
-                    expect(claims).to(beNil())
+                    tokens.map{ Claims($0.rawValue) }.forEach {
+                        expect($0).to(beNil())
+                    }
                 }
             }
         }
