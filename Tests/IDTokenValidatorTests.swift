@@ -12,16 +12,22 @@ import Nimble
 @testable import IDTokenValidator
 
 private enum ValidTokens: String, CaseIterable {
-    case token1 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsInN1YiI6ImF1dGgwfGFiYzEyMyIsImF1ZCI6ImNsaWVudElkIiwiZXhwIjoyMDczMzQ2NzM4fQ.Jr67b2MOAWo4i5ArgP4CpgwXBvARlFx24hI1ZiyWrBI"
-    case token2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsInN1YiI6ImF1dGgwfEFCQzEyMyIsImF1ZCI6ImNsaWVudElkIiwiZXhwIjoyMDczMzQ2NzM4fQ.SoDR2U-PBJHXx1gA9Ab3mcHUda0BqTXuubLtOiva-u8"
-    case token3 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vZXhhbXBsZS5jb20vIiwic3ViIjoiYXV0aDB8YWJjMTIzIiwiYXVkIjoiY2xpZW50SWQiLCJleHAiOjIwNzMzNDY3Mzh9.XROSxRTj-kxxsrIaPCJsu9Nn4BS8e55xqP98KLcE5oo"
+    case token1 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsInN1YiI6ImF1dGgwfGFiYzEyMyIsImF1ZCI6ImNsaWVudElkIiwiaWF0IjoxNTY4MDk2MDQyLCJleHAiOjIwNzMzNDY3Mzh9.lMKzXXCdQA3uFP5ONh1LrmKF0NouRh-Ys-q_aFeN1Ek"
+    case token2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsInN1YiI6ImF1dGgwfEFCQzEyMyIsImF1ZCI6ImNsaWVudElkIiwiaWF0IjoxNTY4MDk2MDQyLCJleHAiOjIwNzMzNDY3Mzh9.PiwyB1RwCuvRzQorjX7XUL1PIIGpE1PL1AR1xAJIl2w"
+    case token3 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vZXhhbXBsZS5jb20vIiwic3ViIjoiYXV0aDB8YWJjMTIzIiwiYXVkIjoiY2xpZW50SWQiLCJpYXQiOjE1NjgwOTYwNDIsImV4cCI6MjA3MzM0NjczOH0.W0ifqbzcMIJUmLNfBaw6lzh6mLaQC_Io-TPUdtnNbgg"
 }
 
 private enum InvalidTokens: String, CaseIterable {
-    case invalidIss = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJleGFtcGxlIiwic3ViIjoiYXV0aDB8YWJjMTIzIiwiYXVkIjoiY2xpZW50SWQiLCJleHAiOjIwNzMzNDY3Mzh9.pzRkTWZyvi0gpxQcUruzU7NuBlGw4IoGDzoOx4F7fAo"
-    case invalidSub = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsInN1YiI6ImFiYzEyMyIsImF1ZCI6ImNsaWVudElkIiwiZXhwIjoyMDczMzQ2NzM4fQ.V8a7iuTeTdi3RxUde9sLSfE9P0lu7-OzOFxS8OloZBE"
-    case invalidAud = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsInN1YiI6ImF1dGgwfGFiYzEyMyIsImF1ZCI6ImF1ZCIsImV4cCI6MjA3MzM0NjczOH0.ifq_ltQ5Yg3Pms1lbq0PiJdrsTML2niqzepkKM57Vaw"
-    case invalidExp = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsInN1YiI6ImF1dGgwfGFiYzEyMyIsImF1ZCI6ImNsaWVudElkIiwiZXhwIjoxNTY4NDI1Mzk2fQ.8qABNB8IbKCsZYdB-ccUsNkl5iXudAN7AhsSqBBhLWk"
+    case invalidIss = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJleGFtcGxlIiwic3ViIjoiYXV0aDB8YWJjMTIzIiwiYXVkIjoiY2xpZW50SWQiLCJpYXQiOjE1NjgwOTYwNDIsImV4cCI6MjA3MzM0NjczOH0.IHwbDNzqAN0qaVZuvEBSyUZhoUYTu2eCAgGXWMXk0xQ"
+    case missingIss = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhdXRoMHxhYmMxMjMiLCJhdWQiOiJjbGllbnRJZCIsImlhdCI6MTU2ODA5NjA0MiwiZXhwIjoyMDczMzQ2NzM4fQ.k_n0ojT13LpH08hsCjaYiGQyQi-YC6Tu5B1Y5Qc-Zds"
+    case invalidSub = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsInN1YiI6ImFiYzEyMyIsImF1ZCI6ImNsaWVudElkIiwiaWF0IjoxNTY4MDk2MDQyLCJleHAiOjIwNzMzNDY3Mzh9.KoE9rTfzg2utFy-um1nmKkbBV0K3TWuOO-3e1KPmk-0"
+    case missingSub = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsImF1ZCI6ImNsaWVudElkIiwiaWF0IjoxNTY4MDk2MDQyLCJleHAiOjIwNzMzNDY3Mzh9.RTff4bYtZlEo1v5ZUVWM8_u_cOenQQ1gtD8Hyw1GJxU"
+    case invalidAud = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsInN1YiI6ImF1dGgwfGFiYzEyMyIsImF1ZCI6ImF1ZCIsImlhdCI6MTU2ODA5NjA0MiwiZXhwIjoyMDczMzQ2NzM4fQ.5kSpfW1RDwcH3nHztDDUVutH4_08VvTAlnvT9Ys2-tM"
+    case missingAud = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsInN1YiI6ImF1dGgwfGFiYzEyMyIsImlhdCI6MTU2ODA5NjA0MiwiZXhwIjoyMDczMzQ2NzM4fQ.4CuSzA9k49UIorVCWtZwOPES_my3CUKb3LvzzzWCU3k"
+    case invalidIat = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsInN1YiI6ImF1dGgwfGFiYzEyMyIsImF1ZCI6ImNsaWVudElkIiwiaWF0IjotMTIzLCJleHAiOjIwNzMzNDY3Mzh9.H9lpYXljy7p-Q0sg_jAgyEyP3FhL1gdw23OGwjlyCfg"
+    case missingIat = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsInN1YiI6ImF1dGgwfGFiYzEyMyIsImF1ZCI6ImNsaWVudElkIiwiZXhwIjoyMDczMzQ2NzM4fQ.Jr67b2MOAWo4i5ArgP4CpgwXBvARlFx24hI1ZiyWrBI"
+    case invalidExp = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsInN1YiI6ImF1dGgwfGFiYzEyMyIsImF1ZCI6ImNsaWVudElkIiwiaWF0IjoxNTY4MDk2MDQyLCJleHAiOjE1Njg0MjUzOTZ9.GbuLqnnkDk-mh2J0meI6V78_KL8RkabxdfPAk9wVBAw"
+    case missingExp = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tLyIsInN1YiI6ImF1dGgwfGFiYzEyMyIsImF1ZCI6ImNsaWVudElkIiwiaWF0IjoxNTY4MDk2MDQyfQ.SwXhxDb36S6GABnR3yMM5igyQ8KciR3NYdQztzYdlGk"
     case dummy = "not-a-token"
 }
 
@@ -122,6 +128,7 @@ class IDTokenValidatorTests: QuickSpec {
                 guard let invalidIssClaims = Claims(InvalidTokens.invalidIss.rawValue),
                     let invalidSubClaims = Claims(InvalidTokens.invalidSub.rawValue),
                     let invalidAudClaims = Claims(InvalidTokens.invalidAud.rawValue),
+                    let invalidIatClaims = Claims(InvalidTokens.invalidIat.rawValue),
                     let invalidExpClaims = Claims(InvalidTokens.invalidExp.rawValue) else {
                         fail("failed to extract claims")
                     
@@ -138,6 +145,10 @@ class IDTokenValidatorTests: QuickSpec {
                 
                 it("should return false for an invalid aud") {
                     expect(ClaimsValidator(credentials).validate(invalidAudClaims)).to(beFalse())
+                }
+                
+                it("should return false for an invalid iat") {
+                    expect(ClaimsValidator(credentials).validate(invalidIatClaims)).to(beFalse())
                 }
                 
                 it("should return false for an invalid exp") {

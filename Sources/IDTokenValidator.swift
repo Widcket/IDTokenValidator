@@ -30,6 +30,7 @@ internal struct Claims {
     internal let iss: String
     internal let aud: String
     internal let sub: String
+    internal let iat: Double
     internal let exp: Double
     
     internal init?(_ idToken: String) {
@@ -56,11 +57,13 @@ internal struct Claims {
             let iss = body["iss"] as? String,
             let aud = body["aud"] as? String,
             let sub = body["sub"] as? String,
+            let iat = body["iat"] as? Double,
             let exp = body["exp"] as? Double else { return nil }
         
         self.iss = iss
         self.aud = aud
         self.sub = sub
+        self.iat = iat
         self.exp = exp
     }
 }
@@ -110,6 +113,10 @@ internal class ClaimsValidator {
             alphanumericCharset.isSuperset(of: userIdCharset)
     }
     
+    private func validateIat(_ iat: Double) -> Bool {
+        return iat >= 0
+    }
+    
     private func validateExp(_ exp: Double) -> Bool {
         // 5 minutes of leeway for server time
         return Date(timeIntervalSince1970: exp) > Date().addingTimeInterval(5.0 * 60.0)
@@ -119,6 +126,7 @@ internal class ClaimsValidator {
         return validateIss(claims.iss) &&
             validateAud(claims.aud) &&
             validateSub(claims.sub) &&
+            validateIat(claims.iat) &&
             validateExp(claims.exp)
     }
 }
