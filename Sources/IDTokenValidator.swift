@@ -17,10 +17,7 @@ public class IDTokenValidator {
     public static func validate(_ idToken: String?, bundle: Bundle = Bundle.main) -> Bool {
         // Check if the token is nil or malformed
         guard let idToken = idToken, let claims = Claims(idToken) else { return false }
-        
-        guard let credentials = Credentials(bundle) else {
-            fatalError("Could not find Auth0.plist")
-        }
+        guard let credentials = Credentials(bundle) else { fatalError("Could not find Auth0.plist") }
         
         return ClaimsValidator(credentials).validate(claims)
     }
@@ -103,7 +100,10 @@ internal class ClaimsValidator {
     private func validateSub(_ sub: String) -> Bool {
         let splitSub = sub.split(separator: "|")
         
-        guard let auth0 = splitSub.first, let userId = splitSub.last else { return false }
+        guard splitSub.count == 2 else { return false }
+        
+        let auth0 = splitSub[0]
+        let userId = splitSub[1]
         
         let alphanumericCharset = CharacterSet.decimalDigits.union(CharacterSet.lowercaseLetters)
         let userIdCharset = CharacterSet(charactersIn: String(userId.lowercased()))
