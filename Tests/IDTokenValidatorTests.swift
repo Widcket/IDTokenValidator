@@ -61,6 +61,7 @@ class IDTokenValidatorTests: QuickSpec {
                         expect($0?.iss).toNot(beEmpty())
                         expect($0?.sub).toNot(beEmpty())
                         expect($0?.aud).toNot(beEmpty())
+                        expect($0?.iat).to(beGreaterThan(1567321702))
                         expect($0?.exp).to(beGreaterThan(1568427208))
                     }
                 }
@@ -75,6 +76,7 @@ class IDTokenValidatorTests: QuickSpec {
                         expect($0?.iss).toNot(beEmpty())
                         expect($0?.sub).toNot(beEmpty())
                         expect($0?.aud).toNot(beEmpty())
+                        expect($0?.iat).to(beGreaterThan(1567321702))
                         expect($0?.exp).to(beGreaterThan(1568340808))
                     }
                 }
