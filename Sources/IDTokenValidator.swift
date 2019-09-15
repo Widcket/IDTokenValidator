@@ -12,7 +12,13 @@ public class IDTokenValidator {
     private init() {}
     
     /**
+     Validates an ID Token.
      
+     - parameter idToken: The ID Token to be validated
+     - parameter bundle: Bundle with the `Auth0.plist` file. By default is the main bundle
+     
+     - returns: A Bool indicating whether the ID Token is valid or not
+     - important: Calling this method without a valid `Auth0.plist` will result in a fatal error
      */
     public static func validate(_ idToken: String?, bundle: Bundle = Bundle.main) -> Bool {
         // Check if the token is nil or malformed
