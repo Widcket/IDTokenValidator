@@ -50,14 +50,12 @@ class IDTokenValidatorTests: QuickSpec {
         describe("Claims") {
             context("given a valid token") {
                 it("should extract the claims") {
-                    ValidTokens.allCases.forEach {
-                        let claims = Claims($0.rawValue)
-                        
-                        expect(claims).toNot(beNil())
-                        expect(claims?.iss).toNot(beEmpty())
-                        expect(claims?.sub).toNot(beEmpty())
-                        expect(claims?.aud).toNot(beEmpty())
-                        expect(claims?.exp).to(beGreaterThan(1568427208))
+                    ValidTokens.allCases.map{ Claims($0.rawValue) }.forEach {
+                        expect($0).toNot(beNil())
+                        expect($0?.iss).toNot(beEmpty())
+                        expect($0?.sub).toNot(beEmpty())
+                        expect($0?.aud).toNot(beEmpty())
+                        expect($0?.exp).to(beGreaterThan(1568427208))
                     }
                 }
             }
@@ -66,14 +64,12 @@ class IDTokenValidatorTests: QuickSpec {
                 it("should extract the claims") {
                     let tokens: [InvalidTokens] = [.invalidIss, .invalidSub, .invalidAud, .invalidExp]
                         
-                    tokens.forEach {
-                        let claims = Claims($0.rawValue)
-                        
-                        expect(claims).toNot(beNil())
-                        expect(claims?.iss).toNot(beEmpty())
-                        expect(claims?.sub).toNot(beEmpty())
-                        expect(claims?.aud).toNot(beEmpty())
-                        expect(claims?.exp).to(beGreaterThan(1568340808))
+                    tokens.map{ Claims($0.rawValue) }.forEach {
+                        expect($0).toNot(beNil())
+                        expect($0?.iss).toNot(beEmpty())
+                        expect($0?.sub).toNot(beEmpty())
+                        expect($0?.aud).toNot(beEmpty())
+                        expect($0?.exp).to(beGreaterThan(1568340808))
                     }
                 }
             }
