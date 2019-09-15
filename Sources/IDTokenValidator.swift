@@ -105,12 +105,12 @@ internal class ClaimsValidator {
         let auth0 = splitSub[0]
         let userId = splitSub[1]
         
-        let alphanumericCharset = CharacterSet.decimalDigits.union(CharacterSet.lowercaseLetters)
-        let userIdCharset = CharacterSet(charactersIn: String(userId.lowercased()))
+        let alphanumericCharacterSet = CharacterSet.asciiDigits.union(.asciiLowercaseLetters)
+        let userIdCharacterSet = CharacterSet(charactersIn: String(userId.lowercased()))
         
         return auth0 == "auth0" &&
             !userId.isEmpty &&
-            alphanumericCharset.isSuperset(of: userIdCharset)
+            alphanumericCharacterSet.isSuperset(of: userIdCharacterSet)
     }
     
     private func validateIat(_ iat: Double) -> Bool {
@@ -129,4 +129,9 @@ internal class ClaimsValidator {
             validateIat(claims.iat) &&
             validateExp(claims.exp)
     }
+}
+
+internal extension CharacterSet {
+    static let asciiDigits = CharacterSet(charactersIn: Unicode.Scalar("0")...Unicode.Scalar("9"))
+    static let asciiLowercaseLetters = CharacterSet(charactersIn: Unicode.Scalar("a")...Unicode.Scalar("z"))
 }
